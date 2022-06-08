@@ -3,8 +3,8 @@
 /******* Detailed info TS Project
  *      Setup tsconfig file : tsc --init
  *
- * Watch changes :
-        tsc --watch
+   Watch changes :
+ *       tsc --watch
  *
  * In the config file set the "outDir" to "./src"
  * and make a src named folder for your .ts files and
