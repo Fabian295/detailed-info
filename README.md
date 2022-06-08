@@ -1,7 +1,11 @@
 # detailed-info
 ### setup development mode
- *      Setup tsconfig file : tsc --init
- *      Watch changes : tsc --watch
+
+    Setup tsconfig file : 
+ *      tsc --init
+
+    Watch changes :
+ *      tsc --watch
   
  *  In the config file set the "outDir" to 
       "./src"
