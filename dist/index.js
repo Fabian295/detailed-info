@@ -27,7 +27,7 @@ let arr = ['Hello', 1, true];
 // Tuple, any can be any type, tuple can be all types, but predefined and that order 
 let person = [1, 'Fabian', true]; //have to be in the predefined spot
 // Tuple Array
-let employee = [
+let employer = [
     [1, 'Jack'],
     [2, 'Sandra'],
     [3, 'Mark']
@@ -92,3 +92,53 @@ function log(message) {
     console.log(message);
 }
 log('Hello, this function has no return value, it\'s return value type is void!');
+// Using the Interface with an Object
+const lTrueman = {
+    id: 1,
+    firstName: 'Larry',
+    age: 42
+};
+const add = (x, y) => x + y;
+const sub = (x, y) => x - y;
+console.log('Add Function:', add(7, 10));
+console.log('Sub Function:', sub(37, 22));
+// Classes, can be made with an Interface, optionally
+class Employee {
+    constructor(id, firstName, age) {
+        this.id = id;
+        this.firstName = firstName;
+        this.age = age;
+    }
+    register() {
+        return `${this.firstName}, age: ${this.age}, is now registered!`;
+    }
+    introduce(city) {
+        city = 'Amsterdam';
+        return `<br/> Hello, I am ${this.firstName}, I am ${this.age} years old and I live in ${city}!`;
+    }
+}
+let citizen = new Employee(10, 'Tristan', 27);
+// return `${this.location} is "(${this.coordX}, ${this.coordY})"`;
+class Point {
+    constructor(x, y, location) {
+        this.coordX = x;
+        this.coordY = y;
+        this.location = location;
+    }
+    getLocation() {
+        return `The coords of ${this.location} is "(${this.coordX}, ${this.coordY})".`;
+    }
+}
+const place = new Point(110, 68, 'Amsterdam');
+console.log(place.getLocation());
+class Geografic extends Point {
+    constructor(x, y, location, pos) {
+        super(x, y, location);
+        this.position = pos;
+    }
+    getLocation() {
+        return `The coordinates for ${this.location} are (${this.coordX}, ${this.coordY})`;
+    }
+}
+let coords = new Geografic(140, 230, "New York", "([x, y])");
+console.log(coords.getLocation());

@@ -31,7 +31,7 @@ let arr: any[] = ['Hello', 1, true]
 // Tuple, any can be any type, tuple can be all types, but predefined and that order 
 let person: [number, string, boolean] = [1, 'Fabian', true]  //have to be in the predefined spot
 // Tuple Array
-let employee: [number, string][] = [
+let employer: [number, string][] = [
   [1, 'Jack'],
   [2, 'Sandra'],
   [3, 'Mark'] 
@@ -113,3 +113,110 @@ function log(message: string): void {
   console.log(message)
 }
 log('Hello, this function has no return value, it\'s return value type is void!')
+
+// Interfaces, a specific structure to an Object, 
+// Array or Function. It's structure is simular to a custom type.
+interface Person{
+  id: number
+ firstName: string
+ age: number
+}
+
+// Using the Interface with an Object
+const lTrueman: Person = {
+  id: 1,
+  firstName: 'Larry',
+  age: 42
+}
+
+// Interface with Functions
+interface MathFunc {
+ ( x: number, y: number): number
+}
+
+const add = (x: number, y: number): number => x + y;
+const sub = (x: number, y: number): number => x - y;
+
+console.log('Add Function:', add(7, 10))
+console.log('Sub Function:', sub(37, 22))
+
+// Classes, can be made with an Interface, optionally
+class Employee implements Person {
+  id: number
+  firstName: string;
+  age: number;
+
+  constructor(id: number, firstName: string, age: number) {
+    this.id = id
+    this.firstName = firstName
+    this.age = age
+  }
+
+  register() {
+    return `${this.firstName}, age: ${this.age}, is now registered!`
+  }
+
+  introduce(city: string):string {
+    city = 'Amsterdam';
+    return `<br/> Hello, I am ${this.firstName}, I am ${this.age} years old and I live in ${city}!`
+  }
+
+}
+
+let citizen = new Employee(10, 'Tristan', 27);
+
+// console.log(citizen.register());
+// document.body.append(citizen.register())
+// let  div = document.createElement('div');
+// let  p = document.createElement('p');
+// p.textContent = citizen.register();
+// p.innerHTML += citizen.introduce('London');
+// div.append(p)
+// document.body.append(div)
+
+
+interface LocationInterface {
+  coordX: number;
+  coordY: number;
+  location: string;
+  getLocation():string;
+}
+// return `${this.location} is "(${this.coordX}, ${this.coordY})"`;
+
+class Point implements LocationInterface {
+    coordX: number;
+    coordY: number;
+    location: string;
+
+    constructor(x: number, y: number, location: string) {
+      this.coordX = x;
+      this.coordY = y;
+      this.location = location;
+    }
+
+    getLocation(): string {
+      return `The coords of ${this.location} is "(${this.coordX}, ${this.coordY})".`;
+    }
+}
+
+const place = new Point(110, 68, 'Amsterdam');
+console.log(place.getLocation());
+
+class Geografic extends Point {
+  position: string ;
+  
+  constructor(x: number, y: number, location: string, pos: string)  {
+    super(x, y, location)
+    this.position = pos;
+  }
+
+  getLocation(): string {
+    return `The coordinates for ${this.location} are (${this.coordX}, ${this.coordY})`;
+  }
+  
+}
+
+let coords = new Geografic(140, 230, "New York", "([x, y])");
+console.log(coords.getLocation());
+
+// Generics
